@@ -1,9 +1,14 @@
-def get_unique_list_numbers() -> list[int]:
-    from random import randint
-    return [randint(-10,10) for _ in range(15)]
+from random import sample
+
+
+def get_unique_list_numbers(min: int = -10, max: int = 10,
+                            length: int = 15) -> list[int]:
+
+    rand_list = [i for i in range(min, max, 1)]
+
+    return sample(rand_list, length)
+
+
 list_unique_numbers = get_unique_list_numbers()
-list_ = []
-for item in list_unique_numbers:
-    if item not in list_:
-        list_.append(item)
-print(list_)
+print(list_unique_numbers)
+print(len(list_unique_numbers) == len(set(list_unique_numbers)))
